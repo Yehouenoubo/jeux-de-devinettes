@@ -1,0 +1,38 @@
+#Créé par Bénito Ornel Yehouenou
+#Créé le 12 Octobre 2022
+#Jeu de devinette
+
+import random
+
+def number():
+    #Je demande a l'utilisateur un nombre a choisir parmi une range de nombre
+    #Je return le nombre aléatoire choisis
+    nombre1 = int(input("Vous devez choisir entre deux nombres, choisissez le premier"))
+    nombre2 = int(input("Vous devez choisir entre deux nombre, choisissez le second"))
+    return random.randint(nombre1, nombre1)
+
+
+playing = True
+while playing:
+    number_range = number()
+    winning = False
+    number_try = 0
+    while not winning:
+        number_try += 1
+
+        guess_numbers = int(input("Choisissez un nombre entre les nombres que vous avez choisis"))
+
+        if guess_numbers > number_range:
+            print("Votre nombre est trop grand, choisissez un plus petit")
+        elif guess_numbers< number_range:
+            print("Votre nombre est trop petit, choisissez un plus grand")
+        else:
+            print("Vous avez fini en:", number_try)
+            winning = True
+
+
+    recommencer = input("Est-ce que vous voulez recommencer y/n")
+    if recommencer == "n":
+        playing = False
+
+
