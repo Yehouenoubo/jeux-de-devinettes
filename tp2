@@ -2,6 +2,7 @@
 #Créé le 12 Octobre 2022
 #Jeu de devinette
 
+#j'importe le module random
 import random
 
 def number():
@@ -12,6 +13,7 @@ def number():
     return random.randint(nombre1, nombre1)
 
 
+#
 playing = True
 while playing:
     number_range = number()
