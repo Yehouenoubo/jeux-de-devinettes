@@ -1,3 +1,7 @@
+#Créé par Bénito Ornel Yehouenou
+#Créé le 13 Octobre 2022
+#Programme qui demande le nom de l'utilisateur et affiche des rangées d'étoiles
+
 x = input("Entrez votre nom: ")
 print("hello", x)
 nbderange = int(input("Combien de rangée d'étoiles voulez-vous:"))
