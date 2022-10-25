@@ -2,39 +2,47 @@
 #Créé le 12 Octobre 2022
 #Jeu de devinette
 
-#j'importe le module random
+
+#J'importe le module random
 import random
 
-def number():
-    #Je demande a l'utilisateur un nombre a choisir parmi une range de nombre
-    #Je return le nombre aléatoire choisis
-    nombre1 = int(input("Vous devez choisir entre deux nombres, choisissez le premier"))
-    nombre2 = int(input("Vous devez choisir entre deux nombre, choisissez le second"))
-    return random.randint(nombre1, nombre1)
+#Je créé une fonction qui renvoie au jeu dans son ensemble
+def jeux():
 
+    #Je créé une fonction qui renvoie les deux nombres choisis
+    def number():
+        #Je demande a l'utilisateur un nombre a choisir parmi une range de nombre
+        #Je return le nombre aléatoire choisis
+        nombre1 = int(input("Donner un nombre au hasard"))
+        nombre2 = int(input("Donner un deuxième nombre au hasard"))
+        return random.randint(nombre1, nombre2)
 
-#
-playing = True
-while playing:
+    #Je dis que la range est entre les deux nombres définis en haut
     number_range = number()
-    winning = False
-    number_try = 0
-    while not winning:
-        number_try += 1
 
-        guess_numbers = int(input("Choisissez un nombre entre les nombres que vous avez choisis"))
-
-        if guess_numbers > number_range:
-            print("Votre nombre est trop grand, choisissez un plus petit")
-        elif guess_numbers< number_range:
-            print("Votre nombre est trop petit, choisissez un plus grand")
+    chances = 0
+    while True:
+        #Je demande à l'utilisateur de donner leur première supposition
+        devinette = int(input("Entrer une supposition: "))
+        
+        #Si supposition = nombre aléatoire
+        if devinette == number_range:
+            print(f"-> Bravo! Vous avez deviner le nombre en {chances + 1} éssai")
+            recommencer = input("Est-ce que vous voulez recommencer y/n")
+            if recommencer == "n":
+                print("Merci et au revoir")
+            else:
+                jeux()
+        
+        #Si supposition < nombre aléatoire
+        elif devinette < number_range:
+            print("-> Votre nombre est plus petit que le nombre aléatoire")
+        
+        #Autrement 
         else:
-            print("Vous avez fini en:", number_try)
-            winning = True
+            print("-> Votre nombre est plus grand que le nombre aléatoire")
+        chances += 1
 
-
-    recommencer = input("Est-ce que vous voulez recommencer y/n")
-    if recommencer == "n":
-        playing = False
+jeux()
 
 
