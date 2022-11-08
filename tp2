@@ -1,47 +1,49 @@
-#Créé par Bénito Ornel Yehouenou
-#Créé le 12 Octobre 2022
-#Jeu de devinette
+# Créé par Bénito Ornel Yehouenou
+# Créé le 12 Octobre 2022
+# Jeu de devinette
 
 
-#J'importe le module random
+# J'importe le module random
 import random
 
-#Je créé une fonction qui renvoie au jeu dans son ensemble
+# Je créé une fonction qui renvoie au jeu dans son ensemble
 def jeux():
-
-    #Je créé une fonction qui renvoie les deux nombres choisis
+    # Je créé une fonction qui renvoie les deux nombres choisis
     def number():
-        #Je demande a l'utilisateur un nombre a choisir parmi une range de nombre
-        #Je return le nombre aléatoire choisis
+        # Je demande a l'utilisateur un nombre a choisir parmi une range de nombre
+        # Je return le nombre aléatoire choisis
         nombre1 = int(input("Donner un nombre au hasard"))
         nombre2 = int(input("Donner un deuxième nombre au hasard"))
         return random.randint(nombre1, nombre2)
 
-    #Je dis que la range est entre les deux nombres définis en haut
+    # Je dis que la range est entre les deux nombres définis en haut
     number_range = number()
 
     chances = 0
-    while True:
-        #Je demande à l'utilisateur de donner leur première supposition
+    jouer = True
+    while jouer:
+        # Je demande à l'utilisateur de donner leur première supposition
         devinette = int(input("Entrer une supposition: "))
-        
-        #Si supposition = nombre aléatoire
+
+        # Si supposition = nombre aléatoire
         if devinette == number_range:
             print(f"-> Bravo! Vous avez deviner le nombre en {chances + 1} éssai")
             recommencer = input("Est-ce que vous voulez recommencer y/n")
+            jouer = False
             if recommencer == "n":
                 print("Merci et au revoir")
             else:
                 jeux()
-        
-        #Si supposition < nombre aléatoire
+
+        # Si supposition < nombre aléatoire
         elif devinette < number_range:
             print("-> Votre nombre est plus petit que le nombre aléatoire")
-        
-        #Autrement 
+
+        # Autrement
         else:
             print("-> Votre nombre est plus grand que le nombre aléatoire")
         chances += 1
+
 
 jeux()
 
